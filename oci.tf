@@ -11,7 +11,7 @@ data "oci_core_images" "ubuntu" {
 resource "oci_core_instance" "cp-node" {
   display_name        = "k3s-cp"
   compartment_id      = var.compartment_id
-  availability_domain = var.aviability_domain
+  availability_domain = var.availability_domain
   metadata = {
     "ssh_authorized_keys" = var.ssh_pub_key
   }

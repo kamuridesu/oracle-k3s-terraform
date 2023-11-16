@@ -1,4 +1,4 @@
-variable "aviability_domain" {
+variable "availability_domain" {
   description = "Domain Region"
   type        = string
   default     = "UPcS:SA-SAOPAULO-1-AD-1"
