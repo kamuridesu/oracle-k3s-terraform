@@ -1,0 +1,4 @@
+.terraform
+config
+*.pem
+*.tfvars
