@@ -2,3 +2,5 @@
 config
 *.pem
 *.tfvars
+*plan*
+*tfstate*

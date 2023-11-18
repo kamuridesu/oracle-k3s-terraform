@@ -14,4 +14,3 @@ provider "oci" {
   fingerprint      = var.fingerprint
   private_key_path = var.key_file
 }
-

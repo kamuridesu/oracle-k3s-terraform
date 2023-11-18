@@ -9,7 +9,7 @@ resource "oci_core_subnet" "k3s_subnet" {
   compartment_id = var.compartment_id
   display_name   = "k3s-subnet"
   cidr_block     = "10.0.0.0/24"
-  dns_label      = "k3s-sub"
+  dns_label      = "k3s"
   route_table_id = oci_core_vcn.k3s_vcn.default_route_table_id
   vcn_id         = oci_core_vcn.k3s_vcn.id
 }
@@ -37,7 +37,7 @@ resource "oci_core_default_security_list" "k3s-security-list" {
     protocol    = "all"
   }
   ingress_security_rules {
-    description = "Allo all ingress"
+    description = "Allow all ingress"
     protocol    = "all"
     source      = "0.0.0.0/0"
   }

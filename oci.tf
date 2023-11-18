@@ -7,7 +7,6 @@ data "oci_core_images" "ubuntu" {
   sort_order               = "DESC"
 }
 
-
 resource "oci_core_instance" "cp-node" {
   display_name        = "k3s-cp"
   compartment_id      = var.compartment_id
