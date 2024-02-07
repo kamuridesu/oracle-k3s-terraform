@@ -7,8 +7,10 @@ data "oci_core_images" "ubuntu" {
   sort_order               = "DESC"
 }
 
-resource "oci_core_instance" "cp-node" {
-  display_name        = "k3s-cp"
+resource "oci_core_instance" "vms" {
+
+  for_each            = toset(var.vm_names)
+  display_name        = each.key
   compartment_id      = var.compartment_id
   availability_domain = var.availability_domain
   metadata = {
@@ -22,7 +24,7 @@ resource "oci_core_instance" "cp-node" {
   }
   source_details {
     boot_volume_size_in_gbs = 50
-    # boot_volume_vpus_per_gb = 120 # Fear of costing money lmao
+    boot_volume_vpus_per_gb = 20
     source_id   = data.oci_core_images.ubuntu.images[0].id
     source_type = "image"
   }
