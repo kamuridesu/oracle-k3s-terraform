@@ -14,7 +14,7 @@ resource "oci_core_instance" "vms" {
   compartment_id      = var.compartment_id
   availability_domain = var.availability_domain
   metadata = {
-    "ssh_authorized_keys" = var.ssh_pub_key
+    "ssh_authorized_keys" = var.ssh_pub_key,
   }
   shape = data.oci_core_images.ubuntu.shape
   shape_config {
@@ -25,8 +25,8 @@ resource "oci_core_instance" "vms" {
   source_details {
     boot_volume_size_in_gbs = 50
     boot_volume_vpus_per_gb = 20
-    source_id   = data.oci_core_images.ubuntu.images[0].id
-    source_type = "image"
+    source_id               = data.oci_core_images.ubuntu.images[0].id
+    source_type             = "image"
   }
   agent_config {
     is_management_disabled = "false"

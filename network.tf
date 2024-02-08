@@ -32,11 +32,13 @@ resource "oci_core_default_security_list" "k3s-security-list" {
   manage_default_resource_id = oci_core_vcn.k3s_vcn.default_security_list_id
   display_name               = "k3s-security-list"
   egress_security_rules {
+    // This is for test only! Don't allow all ports for external networks
     description = "Allow all egress"
     destination = "0.0.0.0/0"
     protocol    = "all"
   }
   ingress_security_rules {
+    // This is for test only! Don't allow all ports for external networks
     description = "Allow all ingress"
     protocol    = "all"
     source      = "0.0.0.0/0"
