@@ -37,10 +37,24 @@ resource "oci_core_default_security_list" "k3s-security-list" {
     destination = "0.0.0.0/0"
     protocol    = "all"
   }
+
+  # ingress_security_rules {
+  #   // This is for test only! Don't allow all ports for external networks
+  #   description = "Allow all ingress"
+  #   protocol    = "all"
+  #   source      = "0.0.0.0/0"
+  # }
+
   ingress_security_rules {
-    // This is for test only! Don't allow all ports for external networks
-    description = "Allow all ingress"
-    protocol    = "all"
-    source      = "0.0.0.0/0"
+    description = "my pc"
+    protocol = "all"
+    source = var.public_ip_source
   }
+
+  ingress_security_rules {
+    description = "Allow all subnet ingress"
+    protocol = "all"
+    source = oci_core_subnet.k3s_subnet.cidr_block
+  }
+
 }

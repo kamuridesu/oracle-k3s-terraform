@@ -34,3 +34,8 @@ variable "vm_names" {
   type        = list(string)
   default     = ["k3s-cp", "k3s-node"]
 }
+
+variable "public_ip_source" {
+  description = "Your public IP adress"
+  type = string
+}
