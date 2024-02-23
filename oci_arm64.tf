@@ -1,4 +1,4 @@
-data "oci_core_images" "ubuntu" {
+data "oci_core_images" "ubuntu-arm" {
   compartment_id           = var.compartment_id
   operating_system         = "Canonical Ubuntu"
   operating_system_version = "22.04"
@@ -16,7 +16,7 @@ resource "oci_core_instance" "vms" {
   metadata = {
     "ssh_authorized_keys" = var.ssh_pub_key,
   }
-  shape = data.oci_core_images.ubuntu.shape
+  shape = data.oci_core_images.ubuntu-arm.shape
   shape_config {
     memory_in_gbs = "12"
     ocpus         = "2"

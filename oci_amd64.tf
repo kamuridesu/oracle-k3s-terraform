@@ -1,4 +1,4 @@
-data "oci_core_images" "ubuntu" {
+data "oci_core_images" "ubuntu-amd64" {
   compartment_id           = var.compartment_id
   operating_system         = "Canonical Ubuntu"
   operating_system_version = "22.04"
@@ -7,7 +7,7 @@ data "oci_core_images" "ubuntu" {
   sort_order               = "DESC"
 }
 
-resource "oci_core_instance" "vms" {
+resource "oci_core_instance" "load-balancer" {
 
   display_name        = "load-balancer"
   compartment_id      = var.compartment_id
@@ -15,7 +15,7 @@ resource "oci_core_instance" "vms" {
   metadata = {
     "ssh_authorized_keys" = var.ssh_pub_key,
   }
-  shape = data.oci_core_images.ubuntu.shape
+  shape = data.oci_core_images.ubuntu-amd64.shape
   shape_config {
     memory_in_gbs = "1"
     ocpus         = "1"
