@@ -24,7 +24,7 @@ resource "oci_core_instance" "load-balancer" {
   source_details {
     boot_volume_size_in_gbs = 50
     boot_volume_vpus_per_gb = 20
-    source_id               = data.oci_core_images.ubuntu.images[0].id
+    source_id               = data.oci_core_images.ubuntu-amd64.images[0].id
     source_type             = "image"
   }
   agent_config {
