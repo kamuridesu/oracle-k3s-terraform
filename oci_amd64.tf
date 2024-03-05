@@ -52,7 +52,6 @@ resource "oci_core_instance" "load-balancer" {
   create_vnic_details {
     assign_private_dns_record = "true"
     assign_public_ip          = "true"
-    subnet_id                 = oci_core_subnet.k3s_subnet.id
+    subnet_id                 = oci_core_subnet.lb_subnet.id
   }
-
 }

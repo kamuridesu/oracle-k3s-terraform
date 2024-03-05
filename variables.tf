@@ -37,5 +37,5 @@ variable "vm_names" {
 
 variable "public_ip_source" {
   description = "Your public IP adress"
-  type = string
+  type        = string
 }
