@@ -61,9 +61,21 @@ resource "oci_core_default_security_list" "k3s-security-list" {
   }
 
   ingress_security_rules {
-    description = "Allow all ingress"
+    description = "Allow load balancer ingress"
     protocol    = "all"
     source      = oci_core_subnet.lb_subnet.cidr_block
+  }
+
+  ingress_security_rules {
+    description = "Allow subnet ingress"
+    protocol    = "all"
+    source      = oci_core_vcn.k3s_vcn.cidr_block
+  }
+
+  ingress_security_rules {
+    description = "Allow my machine ingress"
+    protocol    = "all"
+    source      = var.public_ip_source
   }
 
 }
