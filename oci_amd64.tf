@@ -1,10 +1,12 @@
 data "oci_core_images" "ubuntu-amd64" {
   compartment_id           = var.compartment_id
-  operating_system         = "Canonical Ubuntu"
-  operating_system_version = "22.04"
+  display_name = "Canonical-Ubuntu-22.04-2024.02.18-0"
+  # operating_system         = "Canonical Ubuntu"
+  # operating_system_version = "22.04"
   shape                    = "VM.Standard.E2.1.Micro"
-  sort_by                  = "TIMECREATED"
-  sort_order               = "DESC"
+  # sort_by                  = "TIMECREATED"
+  # sort_order               = "DESC"
+  # id = "ocid1.image.oc1.sa-saopaulo-1.aaaaaaaaxl7vfxg4tcbk6wiceqcbzvhny4ztvtpsbspg6xbpdk2wjvwnaj3a"
 }
 
 resource "oci_core_instance" "load-balancer" {
@@ -53,5 +55,10 @@ resource "oci_core_instance" "load-balancer" {
     assign_private_dns_record = "true"
     assign_public_ip          = "true"
     subnet_id                 = oci_core_subnet.lb_subnet.id
+    # ipv6address_ipv6subnet_cidr_pair_details {
+      # ipv6subnet_cidr = oci_core_subnet.lb_subnet.ipv6cidr_block
+    # }
   }
+
+  depends_on = [ oci_core_drg_attachment.k3s_drg_attachment, oci_core_drg_attachment.lb_drg_attachment ]
 }

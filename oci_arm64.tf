@@ -1,10 +1,11 @@
 data "oci_core_images" "ubuntu-arm" {
   compartment_id           = var.compartment_id
-  operating_system         = "Canonical Ubuntu"
-  operating_system_version = "22.04"
+  display_name = "Canonical-Ubuntu-22.04-aarch64-2024.02.18-0"
+  # operating_system         = "Canonical Ubuntu"
+  # operating_system_version = "22.04"
   shape                    = "VM.Standard.A1.Flex"
-  sort_by                  = "TIMECREATED"
-  sort_order               = "DESC"
+  # sort_by                  = "TIMECREATED"
+  # sort_order               = "DESC"
 }
 
 resource "oci_core_instance" "vms" {
@@ -54,6 +55,11 @@ resource "oci_core_instance" "vms" {
     assign_private_dns_record = "true"
     assign_public_ip          = "true"
     subnet_id                 = oci_core_subnet.k3s_subnet.id
+    # ipv6address_ipv6subnet_cidr_pair_details {
+    #   ipv6subnet_cidr = oci_core_subnet.k3s_subnet.ipv6cidr_block
+    # }
   }
+
+  depends_on = [ oci_core_drg_attachment.k3s_drg_attachment, oci_core_drg_attachment.lb_drg_attachment ]
 
 }
