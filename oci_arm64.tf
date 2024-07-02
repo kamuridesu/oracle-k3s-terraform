@@ -1,13 +1,3 @@
-data "oci_core_images" "ubuntu-arm" {
-  compartment_id           = var.compartment_id
-  display_name = "Canonical-Ubuntu-22.04-aarch64-2024.02.18-0"
-  # operating_system         = "Canonical Ubuntu"
-  # operating_system_version = "22.04"
-  shape                    = "VM.Standard.A1.Flex"
-  # sort_by                  = "TIMECREATED"
-  # sort_order               = "DESC"
-}
-
 resource "oci_core_instance" "vms" {
 
   for_each            = toset(var.vm_names)
@@ -17,7 +7,7 @@ resource "oci_core_instance" "vms" {
   metadata = {
     "ssh_authorized_keys" = var.ssh_pub_key,
   }
-  shape = data.oci_core_images.ubuntu-arm.shape
+  shape = "VM.Standard.A1.Flex"
   shape_config {
     memory_in_gbs = "12"
     ocpus         = "2"
@@ -26,7 +16,8 @@ resource "oci_core_instance" "vms" {
   source_details {
     boot_volume_size_in_gbs = 50
     boot_volume_vpus_per_gb = 20
-    source_id               = data.oci_core_images.ubuntu-arm.images[0].id
+    # https://docs.oracle.com/en-us/iaas/images/image/14056353-b727-4b81-a15a-3b5b9c808695/
+    source_id               = "ocid1.image.oc1.sa-saopaulo-1.aaaaaaaaxl7vfxg4tcbk6wiceqcbzvhny4ztvtpsbspg6xbpdk2wjvwnaj3a"
     source_type             = "image"
   }
   agent_config {

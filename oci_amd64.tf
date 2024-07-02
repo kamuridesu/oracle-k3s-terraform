@@ -1,14 +1,3 @@
-data "oci_core_images" "ubuntu-amd64" {
-  compartment_id           = var.compartment_id
-  display_name = "Canonical-Ubuntu-22.04-2024.02.18-0"
-  # operating_system         = "Canonical Ubuntu"
-  # operating_system_version = "22.04"
-  shape                    = "VM.Standard.E2.1.Micro"
-  # sort_by                  = "TIMECREATED"
-  # sort_order               = "DESC"
-  # id = "ocid1.image.oc1.sa-saopaulo-1.aaaaaaaaxl7vfxg4tcbk6wiceqcbzvhny4ztvtpsbspg6xbpdk2wjvwnaj3a"
-}
-
 resource "oci_core_instance" "load-balancer" {
 
   display_name        = "load-balancer"
@@ -17,7 +6,7 @@ resource "oci_core_instance" "load-balancer" {
   metadata = {
     "ssh_authorized_keys" = var.ssh_pub_key,
   }
-  shape = data.oci_core_images.ubuntu-amd64.shape
+  shape = "VM.Standard.E2.1.Micro"
   shape_config {
     memory_in_gbs = "1"
     ocpus         = "1"
@@ -26,7 +15,8 @@ resource "oci_core_instance" "load-balancer" {
   source_details {
     boot_volume_size_in_gbs = 50
     boot_volume_vpus_per_gb = 20
-    source_id               = data.oci_core_images.ubuntu-amd64.images[0].id
+    # https://docs.oracle.com/en-us/iaas/images/image/6c21715a-0ab7-4a1c-81bd-ea13855f9505/
+    source_id               = "ocid1.image.oc1.sa-saopaulo-1.aaaaaaaafofcjtufgtru2pebgnmxprwk6ihl5gpwvv2efi2yttovfgiluvvq"
     source_type             = "image"
   }
   agent_config {
