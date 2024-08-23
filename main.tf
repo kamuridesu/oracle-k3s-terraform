@@ -5,6 +5,13 @@ terraform {
       version = ">=5.21.0,<6"
     }
   }
+
+  backend "http" {
+    address  = var.backend_url
+    username = var.backend_username
+    password = var.backend_password
+  }
+
 }
 
 provider "oci" {

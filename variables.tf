@@ -40,3 +40,21 @@ variable "public_ip_source" {
   description = "Your public IP adress"
   type        = string
 }
+
+variable "backend_username" {
+  description = "Username for HTTP backend"
+  type        = string
+  default     = ""
+}
+
+variable "backend_password" {
+  description = "Password for HTTP backend"
+  type        = string
+  default     = ""
+}
+
+variable "backend_url" {
+  description = "URL for HTTP backend"
+  type        = string
+  default     = ""
+}

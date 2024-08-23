@@ -13,11 +13,11 @@ resource "oci_core_vcn" "k3s_vcn" {
 
 resource "oci_core_subnet" "k3s_subnet" {
   compartment_id = var.compartment_id
-  display_name = "k3s-subnet"
-  cidr_block = "10.0.0.0/24"
-  dns_label = "k3s"
+  display_name   = "k3s-subnet"
+  cidr_block     = "10.0.0.0/24"
+  dns_label      = "k3s"
   route_table_id = oci_core_vcn.k3s_vcn.default_route_table_id
-  vcn_id = oci_core_vcn.k3s_vcn.id
+  vcn_id         = oci_core_vcn.k3s_vcn.id
   ipv6cidr_block = "2603:c021:c005:c800::/64"
 }
 
@@ -28,8 +28,8 @@ resource "oci_core_drg_attachment" "k3s_drg_attachment" {
 
 resource "oci_core_remote_peering_connection" "k3s_rpc" {
   compartment_id = var.compartment_id
-  drg_id = oci_core_drg.k3s_drg.id
-  display_name = "k3s rpc"
+  drg_id         = oci_core_drg.k3s_drg.id
+  display_name   = "k3s rpc"
 }
 
 resource "oci_core_internet_gateway" "k3s-gateway" {
@@ -51,7 +51,7 @@ resource "oci_core_default_route_table" "k3s-route-table" {
   }
 
   route_rules {
-    destination = oci_core_subnet.lb_subnet.cidr_block
+    destination       = oci_core_subnet.lb_subnet.cidr_block
     network_entity_id = oci_core_drg.k3s_drg.id
   }
   display_name = "k3s route table"
