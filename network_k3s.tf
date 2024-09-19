@@ -91,10 +91,19 @@ resource "oci_core_default_security_list" "k3s-security-list" {
     source      = oci_core_vcn.k3s_vcn.cidr_block
   }
 
-  ingress_security_rules {
-    description = "Allow my machine ingress"
-    protocol    = "all"
-    source      = var.public_ip_source
+  # ingress_security_rules {
+  #   description = "Allow my machine ingress"
+  #   protocol    = "all"
+  #   source      = var.public_ip_source
+  # }
+
+  dynamic "ingress_security_rules" {
+    for_each = var.public_ip_source
+    content {
+      description = "Allow ingress from ${ingress_security_rules.value}"
+      protocol    = "all"
+      source      = ingress_security_rules.value
+    }
   }
 
 }
