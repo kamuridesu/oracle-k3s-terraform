@@ -29,10 +29,16 @@ variable "compartment_id" {
   type        = string
 }
 
-variable "vm_names" {
+variable "arm64_vms" {
   description = "Name for the VMs"
   type        = list(string)
   default     = ["k3s-cp", "k3s-node"]
+}
+
+variable "amd64_vms" {
+  description = "Name for the VMs"
+  type        = list(string)
+  default     = ["load-balancer", "proxy"]
 }
 
 variable "public_ip_source" {

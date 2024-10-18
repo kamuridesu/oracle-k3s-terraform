@@ -1,6 +1,6 @@
-resource "oci_core_instance" "vms" {
+resource "oci_core_instance" "arm64" {
 
-  for_each            = toset(var.vm_names)
+  for_each            = toset(var.arm64_vms)
   display_name        = each.key
   compartment_id      = var.compartment_id
   availability_domain = var.availability_domain

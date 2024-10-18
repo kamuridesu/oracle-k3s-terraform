@@ -9,6 +9,7 @@ resource "oci_core_vcn" "lb_vcn" {
   cidr_block     = "11.0.0.0/16"
   dns_label      = "lb"
   is_ipv6enabled = true
+  ipv6private_cidr_blocks = [ "2603:c021:c008:61FF::/64" ]
 }
 
 resource "oci_core_subnet" "lb_subnet" {
