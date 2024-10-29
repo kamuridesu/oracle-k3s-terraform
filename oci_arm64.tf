@@ -16,8 +16,8 @@ resource "oci_core_instance" "arm64" {
   source_details {
     boot_volume_size_in_gbs = 50
     boot_volume_vpus_per_gb = 20
-    # https://docs.oracle.com/en-us/iaas/images/image/14056353-b727-4b81-a15a-3b5b9c808695/
-    source_id   = "ocid1.image.oc1.sa-saopaulo-1.aaaaaaaaxl7vfxg4tcbk6wiceqcbzvhny4ztvtpsbspg6xbpdk2wjvwnaj3a"
+    # https://docs.oracle.com/en-us/iaas/images/image/2c243e52-ed4b-4bc5-b7ce-2a94063d2a19/index.htm
+    source_id   = "ocid1.image.oc1.sa-saopaulo-1.aaaaaaaaeor33zqzryd3smqgyg2arr4whsuobbtlwzxazovoto5vjnckaacq"
     source_type = "image"
   }
   agent_config {
@@ -46,9 +46,10 @@ resource "oci_core_instance" "arm64" {
     assign_private_dns_record = "true"
     assign_public_ip          = "true"
     subnet_id                 = oci_core_subnet.k3s_subnet.id
-    # ipv6address_ipv6subnet_cidr_pair_details {
-    #   ipv6subnet_cidr = oci_core_subnet.k3s_subnet.ipv6cidr_block
-    # }
+    assign_ipv6ip = true
+    ipv6address_ipv6subnet_cidr_pair_details {
+      ipv6subnet_cidr = oci_core_subnet.k3s_subnet.ipv6cidr_block
+    }
   }
 
   depends_on = [oci_core_drg_attachment.k3s_drg_attachment, oci_core_drg_attachment.lb_drg_attachment]
