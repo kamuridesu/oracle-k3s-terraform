@@ -4,12 +4,12 @@ resource "oci_core_drg" "lb_drg" {
 }
 
 resource "oci_core_vcn" "lb_vcn" {
-  compartment_id = var.compartment_id
-  display_name   = "lb-vcn"
-  cidr_block     = "11.0.0.0/16"
-  dns_label      = "lb"
-  is_ipv6enabled = true
-  ipv6private_cidr_blocks = [ "2603:c021:c008:61ff::/64" ]
+  compartment_id          = var.compartment_id
+  display_name            = "lb-vcn"
+  cidr_block              = "11.0.0.0/16"
+  dns_label               = "lb"
+  is_ipv6enabled          = true
+  ipv6private_cidr_blocks = ["2603:c021:c008:61ff::/64"]
 }
 
 resource "oci_core_subnet" "lb_subnet" {

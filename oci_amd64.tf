@@ -46,7 +46,7 @@ resource "oci_core_instance" "amd64" {
     assign_private_dns_record = "true"
     assign_public_ip          = "true"
     subnet_id                 = oci_core_subnet.lb_subnet.id
-    assign_ipv6ip = true
+    assign_ipv6ip             = true
     ipv6address_ipv6subnet_cidr_pair_details {
       ipv6subnet_cidr = oci_core_subnet.lb_subnet.ipv6cidr_block
     }
