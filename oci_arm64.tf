@@ -11,7 +11,6 @@ resource "oci_core_instance" "arm64" {
   shape_config {
     memory_in_gbs = "12"
     ocpus         = "2"
-
   }
   source_details {
     boot_volume_size_in_gbs = 50

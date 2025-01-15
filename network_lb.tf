@@ -85,4 +85,3 @@ resource "oci_core_default_security_list" "lb-security-list" {
   }
 
 }
-
