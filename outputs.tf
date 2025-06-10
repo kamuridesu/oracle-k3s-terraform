@@ -8,6 +8,6 @@ output "k3s_public_ip_ipv4" {
 output "lb_public_ip" {
   description = "Load Balancer Public IP"
   value = {
-    for k, v in oci_core_instance.amd64 : k => v.public_ip
+    for k, v in module.oci_instance : k => v
   }
 }
