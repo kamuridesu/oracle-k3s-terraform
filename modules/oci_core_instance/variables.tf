@@ -24,7 +24,6 @@ variable "shape" {
 
 variable "os_image" {
   type    = string
-  default = "VM.Standard.E2.1.Micro"
 }
 
 variable "subnet_id" {
@@ -33,4 +32,14 @@ variable "subnet_id" {
 
 variable "ipv6subnet_cidr" {
   type = string
+}
+
+variable "total_memory" {
+  type = string
+  default = "1"
+}
+
+variable "total_ocpus" {
+  type = string
+  default = "1"
 }
