@@ -54,9 +54,6 @@ resource "oci_core_instance" "amd64" {
     assign_public_ip          = "true"
     subnet_id                 = var.subnet_id
     assign_ipv6ip             = false
-    #ipv6address_ipv6subnet_cidr_pair_details {
-      #ipv6subnet_cidr = var.ipv6subnet_cidr
-      # }
   }
 
 }

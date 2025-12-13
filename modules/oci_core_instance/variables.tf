@@ -5,6 +5,11 @@ variable "name" {
 
 variable "compartment_id" {
   type = string
+  sensitive = true
+  validation {
+    condition = can(regex("^ocid1\\.tenancy\\.oc[1|2|3]\\.\\..{60}$", var.compartment_id))
+    error_message = "Invalid user tenancy"
+  }
 }
 
 variable "availability_domain" {
@@ -13,6 +18,7 @@ variable "availability_domain" {
 
 variable "ssh_authorized_keys" {
   type = string
+  sensitive = true
 }
 
 variable "shape" {
@@ -28,10 +34,12 @@ variable "os_image" {
 
 variable "subnet_id" {
   type = string
+  sensitive = true
 }
 
 variable "ipv6subnet_cidr" {
   type = string
+  sensitive = true
 }
 
 variable "total_memory" {

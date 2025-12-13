@@ -3,6 +3,7 @@ output "k3s_public_ip_ipv4" {
   value = {
     for k, v in module.oci_instance_arm : k  => v
   }
+  sensitive = true
 }
 
 output "lb_public_ip" {
@@ -10,4 +11,12 @@ output "lb_public_ip" {
   value = {
     for k, v in module.oci_instance : k => v
   }
+  sensitive = true
 }
+
+output "vault_management_endpoint" {
+  description = "Vault management endpoint"
+  value = oci_kms_vault.default_vault.management_endpoint
+  sensitive = true
+}
+

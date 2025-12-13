@@ -1,6 +1,28 @@
 # This file is maintained automatically by "tofu init".
 # Manual edits may be lost in future updates.
 
+provider "registry.opentofu.org/hashicorp/oci" {
+  version = "7.28.0"
+  hashes = [
+    "h1:n7W9d+LC0PPhZQGLlUQVJG3Lce8yIxoZIyou19U5IIY=",
+    "zh:0bfb43f1c72822361dd324b0e9c9eeeafcf370effb9431d4c28ef36132b1093b",
+    "zh:1210bea854da107dece8b58e8b4726846c29d5c7ecb472ef94542363937c0849",
+    "zh:163d158fef70f91bc364ac89162d89822d5c761e1935d2ba871947f2e2eaf5a7",
+    "zh:2744303ab04384c592a8a13a7769fc2dd74634673fa896cc8d245d0ffb9a9a4a",
+    "zh:311e20587cfa412e9f5ca4c20340a12140f057658868ff2fa09253396e904248",
+    "zh:39d0b6abd91ba85c273a2841e8a8f94bd2f721755f05990fdd484ae04c7fb122",
+    "zh:3fa1a7267e7b69354f8f70af2abb2f7cb97f9a46831f9c5061ffe3f9f4e0419d",
+    "zh:48f525f0f8f9905ac60d19a1989bd00b20592915daa8ae2953aa3e3f0d01550f",
+    "zh:576a7d05e263128ff45120621bfbc1667548dbe8b903cd23a9ba52b38f81a4ac",
+    "zh:66f28654eaccee651287e091340db08ebec8b11fc34a12854b804e47a6d614fc",
+    "zh:79fe08cd438a3c8eb8aeeaad3e2da2eb246f91f39158406416f8f0b983309cfa",
+    "zh:9ad05d5b86f38ed409b9237550d05afda04742854b2c2baf5050f034fba5db5b",
+    "zh:9b12af85486a96aedd8d7984b0ff811a4b42e3d88dad1a3fb4c0b580d04fa425",
+    "zh:c777fe926835b4ddfcf1eea91aab356f2477ebe57783693656a0a9c375f0b1df",
+    "zh:ed70ad375fd096700bbb5f52699946ebda9b24e9930eee3253ca1d9d8ac847eb",
+  ]
+}
+
 provider "registry.opentofu.org/oracle/oci" {
   version     = "6.21.0"
   constraints = ">= 6.0.0"
